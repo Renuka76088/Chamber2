@@ -1,156 +1,160 @@
-import React from "react";
-import { 
-  FileText, 
-  Upload, 
-  User, 
-  Building2, 
-  Phone, 
-  Mail, 
-  Globe, 
-  ShieldCheck, 
-  Eye, 
-  Send,
-  Landmark
-} from "lucide-react";
+import React, { useState } from 'react';
+import { PackageSearch, Calculator, Send } from 'lucide-react';
 
 const TradeEnquiryForm = () => {
-  const inputStyle = "w-full bg-white border border-gray-300 px-5 py-4 text-[17px] focus:border-[#ef3e32] outline-none transition-all placeholder:text-gray-300 font-normal text-gray-800";
-  const labelStyle = "block text-[17px] font-bold uppercase text-gray-500 mb-3";
+  const [step, setStep] = useState(1);
 
   return (
-    <div className="bg-[#FAF9F6] font-sans pb-24">
+    <div className="pt-32 pb-24 bg-[#FDFBF7] min-h-screen relative">
+      <div className="absolute top-40 left-0 w-full h-[500px] bg-[#E6DBC4]/30 mix-blend-multiply filter blur-[100px] -z-10"></div>
       
-      {/* 1. MANAGEMENT STYLE BANNER */}
-      <section className="relative h-[450px] bg-gray-900 text-white flex items-center overflow-hidden">
-        {/* Boardroom Abstract Background */}
-        <div className="absolute inset-0 opacity-20">
-          <img 
-            src="https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=2000" 
-            alt="Boardroom Background" 
-            className="w-full h-full object-cover blur-[2px]"
-          />
-        </div>
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* Red Accent Overlays - Sharp Corners (Same as Management) */}
-        <div className="absolute right-0 top-0 bottom-0 w-1/4 bg-[#ef3e32] transform translate-x-24 -skew-x-12 opacity-90"></div>
-        <div className="absolute left-[-10px] top-1/2 -translate-y-1/2 h-[60%] w-2 bg-[#ef3e32]"></div>
-
-        <div className="max-w-7xl mx-auto px-6 relative z-10 w-full text-center md:text-left">
-          <div className="flex items-center gap-3 justify-center md:justify-start mb-6">
-            <Landmark className="text-[#ef3e32]" size={28} />
-            <span className="text-[10px] font-black uppercase tracking-[0.5em] text-[#ef3e32]">Official e-Portal</span>
-          </div>
-          <h1 className="text-5xl md:text-7xl font-black uppercase tracking-tighter leading-none mb-6">
-            Apply for <br />
-            <span className="text-[#ef3e32]">Membership</span>
-          </h1>
-          <p className="max-w-xl text-gray-300 text-[17px] leading-relaxed font-medium">
-            Register your business with the Parekh Textile of Chamber to access 
-            global trade networks, industrial tenders, and professional consultancy.
+        <div className="text-center mb-16">
+          <h1 className="text-4xl md:text-5xl font-serif text-[#333333] mb-4">Trade e-Enquiry</h1>
+          <p className="text-[#5C4A2A]/80 font-light text-lg max-w-2xl mx-auto">
+            Get personalized estimates for bulk orders, custom weaves, or retail partnerships. Let us know what you need, and our experts will craft a tailored proposal.
           </p>
         </div>
-      </section>
 
-      {/* 2. FORM SECTION */}
-      <div className="max-w-5xl mx-auto px-6 -mt-20 relative z-20">
-        <div className="bg-white shadow-2xl border border-gray-100 overflow-hidden">
+        {/* Progress Tracker */}
+        <div className="flex justify-between items-center mb-12 relative max-w-xl mx-auto">
+          <div className="absolute top-1/2 left-0 w-full h-0.5 bg-[#E6DBC4] -z-10 -translate-y-1/2"></div>
+          <div className="absolute top-1/2 left-0 h-0.5 bg-[#B79A63] -z-10 -translate-y-1/2 transition-all duration-500" style={{ width: step === 1 ? '0%' : '100%' }}></div>
           
-          <form className="p-10 md:p-16 space-y-12">
-            
-            {/* SECTION: OFFICIAL */}
-            <div className="grid md:grid-cols-2 gap-10">
-              <div className="md:col-span-2 border-l-4 border-[#ef3e32] pl-4">
-                 <h1 className="font-black uppercase text-gray-900" style={{fontsize:'30px'}}>Official Authorization</h1>
-                 <p className="text-[14px] text-gray-400 font-medium uppercase tracking-widest mt-1" style={{fontsize:'17px'}}>For Chamber Records Only</p>
-              </div>
-              <div>
-                <label className={labelStyle}>Authorized Official Name</label>
-                <input type="text" className={inputStyle} placeholder="Enter Name" />
-              </div>
-              <div>
-                <label className={labelStyle}>Official Code No.</label>
-                <input type="text" className={inputStyle} placeholder="CHB-XXXX" />
-              </div>
+          <button onClick={() => setStep(1)} className="flex flex-col items-center gap-2 group">
+            <div className={`w-12 h-12 rounded-full flex items-center justify-center transition-colors duration-300 ${step >= 1 ? 'bg-[#5C4A2A] text-white shadow-lg shadow-[#5C4A2A]/30' : 'bg-white border-2 border-[#E6DBC4] text-[#8C7345]'}`}>
+              <PackageSearch size={20} />
             </div>
-
-            {/* SECTION: BUSINESS DETAILS */}
-            <div className="grid md:grid-cols-2 gap-10 pt-4">
-              <div className="md:col-span-2 border-l-4 border-gray-900 pl-4">
-                 <h3 className="text-lg font-black uppercase tracking-tight text-gray-900" style={{fontsize:'17px'}}>Business Credentials</h3>
-                 <p className="text-[14px] text-gray-400 font-medium uppercase tracking-widest mt-1">Applicant Information</p>
-              </div>
-              <div>
-                <label className={labelStyle}>Name of the Applicant</label>
-                <input type="text" className={inputStyle} placeholder="Full Legal Name" />
-              </div>
-              <div>
-                <label className={labelStyle}>Title of the Textile Business</label>
-                <input type="text" className={inputStyle} placeholder="Company / Firm Name" />
-              </div>
-              <div className="md:col-span-2">
-                <label className={labelStyle}>Address of the Business</label>
-                <textarea className={`${inputStyle} h-32`} placeholder="Complete Address"></textarea>
-              </div>
-              <div>
-                <label className={labelStyle}>Mobile Number</label>
-                <input type="tel" className={inputStyle} placeholder="+91 XXXXX XXXXX" />
-              </div>
-              <div>
-                <label className={labelStyle}>Official Email Id</label>
-                <input type="email" className={inputStyle} placeholder="email@company.com" />
-              </div>
-              <div className="md:col-span-2">
-                <label className={labelStyle}>Nature of Business</label>
-                <select className={inputStyle}>
-                   <option>Retailer</option>
-                   <option>Wholesaler</option>
-                   <option>Manufacturer</option>
-                   <option>Others</option>
-                </select>
-              </div>
-            </div>
-
-            {/* SECTION: UPLOAD */}
-            <div className="pt-4">
-              <label className={labelStyle}>Upload Document (GST, MSME, CIN, etc.)</label>
-              <div className="border-2 border-dashed border-gray-200 p-12 text-center hover:border-[#ef3e32] transition-all cursor-pointer bg-gray-50">
-                <Upload className="mx-auto text-gray-400 mb-4" size={40} />
-                <p className="text-[17px] font-bold text-gray-600">Select files to upload or drag & drop</p>
-                <p className="text-[13px] text-gray-400 mt-2 uppercase tracking-widest font-bold">Max File Size: 5MB (PDF/JPG)</p>
-              </div>
-            </div>
-
-            {/* UNDERTAKING SECTION */}
-            <div className="bg-[#1a1a1a] p-10 text-white relative">
-              <div className="absolute left-0 top-0 bottom-0 w-1 bg-[#ef3e32]"></div>
-              <h4 className="text-[#ef3e32] font-black uppercase mb-4"style={{fontsize:'40px'}}>Official Undertaking</h4>
-              <p className="text-[17px] leading-relaxed text-gray-300 italic">
-                "I have read the Terms & Conditions of subscription for the membership in the Chamber of Textile. 
-                All the information provided by me and the documents uploaded thereof are true and authentic 
-                to the best of my knowledge and belief."
-              </p>
-              <div className="mt-8 flex items-center gap-4">
-                 <input type="checkbox" className="w-5 h-5 accent-[#ef3e32]" id="terms" />
-                 <label htmlFor="terms" className="text-sm font-bold uppercase  text-gray-400" style={{fontsize:'20px'}}>I Agree to the Terms</label>
-              </div>
-            </div>
-
-            {/* SUBMIT BUTTONS */}
-            <div className="flex flex-col md:flex-row gap-6 pt-10">
-              <button className="flex-1 py-5 border-2 border-gray-900 font-black text-xs uppercase tracking-[0.3em] hover:bg-gray-900 hover:text-white transition-all flex items-center justify-center gap-3">
-                <Eye size={18} /> Preview Form
-              </button>
-              <button className="flex-1 py-5 bg-[#ef3e32] text-white font-black text-xs uppercase tracking-[0.3em] shadow-xl shadow-red-100 hover:bg-black transition-all flex items-center justify-center gap-3">
-                Submit Application <Send size={18} />
-              </button>
-            </div>
-
-          </form>
+            <span className={`text-sm font-medium ${step >= 1 ? 'text-[#333333]' : 'text-[#8C7345]'}`}>Details</span>
+          </button>
           
-          <div className="bg-gray-100 py-6 text-center">
-             <p className="text-[11px] font-bold text-gray-400 uppercase tracking-[0.5em]">Parekh Textile Of Chamber • Industrial Authority</p>
+          <button onClick={() => setStep(2)} className="flex flex-col items-center gap-2 group">
+            <div className={`w-12 h-12 rounded-full flex items-center justify-center transition-colors duration-300 ${step >= 2 ? 'bg-[#5C4A2A] text-white shadow-lg shadow-[#5C4A2A]/30' : 'bg-white border-2 border-[#E6DBC4] text-[#8C7345] group-hover:border-[#B79A63]'}`}>
+              <Calculator size={20} />
+            </div>
+            <span className={`text-sm font-medium ${step >= 2 ? 'text-[#333333]' : 'text-[#8C7345]'}`}>Estimate</span>
+          </button>
+        </div>
+
+        {/* Form Container */}
+        <div className="glass-card rounded-[2rem] p-8 md:p-12 shadow-2xl relative overflow-hidden">
+          {/* Decorative Corner */}
+          <div className="absolute top-0 right-0 w-32 h-32 bg-[#F4EFE6] rounded-bl-full z-0 opacity-50"></div>
+
+          <div className="relative z-10 transition-all duration-500">
+            {step === 1 ? (
+              <div className="space-y-6 animate-fade-in-up">
+                <h3 className="text-2xl font-serif text-[#333333] mb-8">Tell us about your requirements</h3>
+                
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div className="space-y-2">
+                    <label className="text-sm font-medium text-[#5C4A2A]">Fabric Type</label>
+                    <select className="w-full px-4 py-3.5 rounded-xl bg-white/50 border border-[#D8C5A1] focus:ring-2 focus:ring-[#B79A63]/50 focus:border-[#B79A63] text-[#5C4A2A]">
+                      <option>Pure Raw Silk</option>
+                      <option>Banarasi Silk</option>
+                      <option>Silk Organza</option>
+                      <option>Crepe de Chine</option>
+                      <option>Georgette</option>
+                      <option>Other (Specify in notes)</option>
+                    </select>
+                  </div>
+                  
+                  <div className="space-y-2">
+                    <label className="text-sm font-medium text-[#5C4A2A]">Quantity (in Meters)</label>
+                    <input 
+                      type="number" 
+                      placeholder="e.g. 500" 
+                      className="w-full px-4 py-3.5 rounded-xl bg-white/50 border border-[#D8C5A1] focus:ring-2 focus:ring-[#B79A63]/50 focus:border-[#B79A63]"
+                    />
+                  </div>
+                </div>
+
+                <div className="space-y-2">
+                  <label className="text-sm font-medium text-[#5C4A2A]">Color Palette / Dye Method</label>
+                  <select className="w-full px-4 py-3.5 rounded-xl bg-white/50 border border-[#D8C5A1] focus:ring-2 focus:ring-[#B79A63]/50 focus:border-[#B79A63] text-[#5C4A2A]">
+                    <option>Natural / Undyed</option>
+                    <option>Custom Solid Colors</option>
+                    <option>Ombre / Gradient Dye</option>
+                    <option>Block Print Base</option>
+                  </select>
+                </div>
+
+                <div className="space-y-2">
+                  <label className="text-sm font-medium text-[#5C4A2A]">Additional Notes / Processing</label>
+                  <textarea 
+                    rows="4" 
+                    placeholder="Any specific finishing required? Softened, stiffened, gold zari inclusion?" 
+                    className="w-full px-4 py-3.5 rounded-xl bg-white/50 border border-[#D8C5A1] focus:ring-2 focus:ring-[#B79A63]/50 focus:border-[#B79A63] resize-none"
+                  ></textarea>
+                </div>
+
+                <div className="pt-4 flex justify-end">
+                  <button 
+                    onClick={() => setStep(2)}
+                    className="px-8 py-3.5 rounded-full bg-[#5C4A2A] text-white font-medium hover:bg-[#8C7345] transition-all duration-300 flex items-center gap-2"
+                  >
+                    Proceed to Contact Info
+                    <Send size={16} />
+                  </button>
+                </div>
+              </div>
+            ) : (
+              <div className="space-y-6 animate-fade-in-up">
+                <h3 className="text-2xl font-serif text-[#333333] mb-8">Where should we send the estimate?</h3>
+                
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div className="space-y-2">
+                    <label className="text-sm font-medium text-[#5C4A2A]">Full Name / Company Name</label>
+                    <input 
+                      type="text" 
+                      placeholder="Your Name" 
+                      className="w-full px-4 py-3.5 rounded-xl bg-white/50 border border-[#D8C5A1] focus:ring-2 focus:ring-[#B79A63]/50 focus:border-[#B79A63]"
+                    />
+                  </div>
+                  
+                  <div className="space-y-2">
+                    <label className="text-sm font-medium text-[#5C4A2A]">Email Address</label>
+                    <input 
+                      type="email" 
+                      placeholder="you@company.com" 
+                      className="w-full px-4 py-3.5 rounded-xl bg-white/50 border border-[#D8C5A1] focus:ring-2 focus:ring-[#B79A63]/50 focus:border-[#B79A63]"
+                    />
+                  </div>
+                </div>
+
+                <div className="space-y-2">
+                  <label className="text-sm font-medium text-[#5C4A2A]">Phone Number</label>
+                  <input 
+                    type="tel" 
+                    placeholder="+91 ___ ___ ____" 
+                    className="w-full px-4 py-3.5 rounded-xl bg-white/50 border border-[#D8C5A1] focus:ring-2 focus:ring-[#B79A63]/50 focus:border-[#B79A63]"
+                  />
+                </div>
+                
+                <div className="bg-[#F4EFE6]/50 p-4 rounded-xl border border-[#D8C5A1]/30 flex gap-3 text-sm text-[#5C4A2A]">
+                  <Calculator className="shrink-0 text-[#B79A63]" size={20} />
+                  <p>Our sales team will analyze your requirements and send a detailed quotation along with approximate lead times within 24-48 business hours.</p>
+                </div>
+
+                <div className="pt-4 flex justify-between items-center">
+                  <button 
+                    onClick={() => setStep(1)}
+                    className="px-6 py-3.5 rounded-full text-[#5C4A2A] font-medium hover:bg-[#F4EFE6] transition-colors"
+                  >
+                    Back
+                  </button>
+                  <button 
+                    className="px-8 py-3.5 rounded-full bg-[#B79A63] hover:bg-[#8C7345] text-white font-medium transition-all duration-300 shadow-lg"
+                  >
+                    Submit Enquiry
+                  </button>
+                </div>
+              </div>
+            )}
           </div>
         </div>
+
       </div>
     </div>
   );

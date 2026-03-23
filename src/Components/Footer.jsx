@@ -1,138 +1,97 @@
-import React from 'react'
-import {
-  Mail,
-  Phone,
-  MapPin
-} from "lucide-react";
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { Facebook, Instagram, Twitter, Linkedin, Mail, Phone, MapPin } from 'lucide-react';
 
-function Footer() {
+const Footer = () => {
   return (
-    <>
-      <footer className="bg-gray-900 text-gray-300 pt-20 pb-8">
-
-        <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-2 lg:grid-cols-4 gap-10">
-
-          {/* ABOUT */}
-          <div>
-
-            <h2 className="text-2xl font-bold text-white mb-4">
-              PAREKH TEXTILE CHAMBER
-            </h2>
-
-            <p className="text-gray-400 leading-relaxed mb-6">
-              Parekh Textile Chamber is dedicated to delivering premium textile solutions
-              with advanced manufacturing techniques, innovative designs, and a commitment
-              to quality and sustainability.
+    <footer className="bg-[#5C4A2A] text-[#FDFBF7] pt-16 pb-8 relative overflow-hidden">
+      {/* Decorative Silk Elements */}
+      <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[#B79A63] via-[#F4EFE6] to-[#B79A63] opacity-40"></div>
+      <div className="absolute -top-40 -right-40 w-96 h-96 bg-[#8C7345] rounded-full mix-blend-multiply filter blur-3xl opacity-20 hidden md:block"></div>
+      
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+          
+          {/* Brand Col */}
+          <div className="space-y-6">
+            <Link to="/" className="flex items-center gap-2 group inline-block">
+              <span className="font-serif text-3xl font-bold tracking-wider text-[#FDFBF7]">
+                H.C. Parekh Silk
+              </span>
+            </Link>
+            <p className="text-[#E6DBC4] text-sm leading-relaxed">
+              Experience the ethereal beauty of 100% pure silk. Woven with passion, crafted with heritage. Your destination for premium textile solutions.
             </p>
-
-            <div className="space-y-3">
-
-              <div className="flex items-center gap-3">
-                <MapPin size={18} />
-                <span>BENGALURU, KARNATAK INDIA</span>
-              </div>
-
-              <div className="flex items-center gap-3">
-                <Phone size={18} />
-                <span>+91 1111 1111</span>
-              </div>
-
-              <div className="flex items-center gap-3">
-                <Mail size={18} />
-                <span>info@parekhtextile.com</span>
-              </div>
-
+            <div className="flex gap-4 pt-2">
+              <a href="#" className="w-10 h-10 rounded-full bg-[#8C7345]/30 flex items-center justify-center hover:bg-[#B79A63] hover:text-[#5C4A2A] transition-colors duration-300">
+                <Facebook size={18} />
+              </a>
+              <a href="#" className="w-10 h-10 rounded-full bg-[#8C7345]/30 flex items-center justify-center hover:bg-[#B79A63] hover:text-[#5C4A2A] transition-colors duration-300">
+                <Instagram size={18} />
+              </a>
+              <a href="#" className="w-10 h-10 rounded-full bg-[#8C7345]/30 flex items-center justify-center hover:bg-[#B79A63] hover:text-[#5C4A2A] transition-colors duration-300">
+                <Twitter size={18} />
+              </a>
+              <a href="#" className="w-10 h-10 rounded-full bg-[#8C7345]/30 flex items-center justify-center hover:bg-[#B79A63] hover:text-[#5C4A2A] transition-colors duration-300">
+                <Linkedin size={18} />
+              </a>
             </div>
-
           </div>
 
-          {/* QUICK LINKS */}
+          {/* Quick Links */}
           <div>
-
-            <h3 className="text-lg font-semibold text-white mb-6">
-              Quick Links
-            </h3>
-
+            <h3 className="font-serif text-xl mb-6 text-[#B79A63]">Quick Links</h3>
             <ul className="space-y-3">
-              <li className="hover:text-red-500 cursor-pointer">Home</li>
-              <li className="hover:text-red-500 cursor-pointer">About Chamber</li>
-              <li className="hover:text-red-500 cursor-pointer">Our Services</li>
-              <li className="hover:text-red-500 cursor-pointer">Industries</li>
-              <li className="hover:text-red-500 cursor-pointer">Contact Us</li>
+              <li><Link to="/" className="text-[#E6DBC4] hover:text-white transition-colors text-sm flex items-center gap-2 before:content-[''] before:w-1.5 before:h-1.5 before:bg-[#B79A63] before:rounded-full">Home</Link></li>
+              <li><Link to="/about" className="text-[#E6DBC4] hover:text-white transition-colors text-sm flex items-center gap-2 before:content-[''] before:w-1.5 before:h-1.5 before:bg-[#B79A63] before:rounded-full">About Us</Link></li>
+              <li><Link to="/products-gallery" className="text-[#E6DBC4] hover:text-white transition-colors text-sm flex items-center gap-2 before:content-[''] before:w-1.5 before:h-1.5 before:bg-[#B79A63] before:rounded-full">Products Gallery</Link></li>
+              <li><Link to="/contact" className="text-[#E6DBC4] hover:text-white transition-colors text-sm flex items-center gap-2 before:content-[''] before:w-1.5 before:h-1.5 before:bg-[#B79A63] before:rounded-full">Contact Us</Link></li>
             </ul>
-
           </div>
 
-          {/* SERVICES */}
+          {/* More Pages */}
           <div>
-
-            <h3 className="text-lg font-semibold text-white mb-6">
-              Our Expertise
-            </h3>
-
+            <h3 className="font-serif text-xl mb-6 text-[#B79A63]">More Information</h3>
             <ul className="space-y-3">
-              <li className="hover:text-red-500 cursor-pointer">
-                Textile Manufacturing
-              </li>
+              <li><Link to="/management" className="text-[#E6DBC4] hover:text-white transition-colors text-sm flex items-center gap-2 before:content-[''] before:w-1.5 before:h-1.5 before:bg-[#B79A63] before:rounded-full">Our Management</Link></li>
+              <li><Link to="/associates" className="text-[#E6DBC4] hover:text-white transition-colors text-sm flex items-center gap-2 before:content-[''] before:w-1.5 before:h-1.5 before:bg-[#B79A63] before:rounded-full">Our Textile Associates</Link></li>
+              <li><Link to="/enquiry" className="text-[#E6DBC4] hover:text-white transition-colors text-sm flex items-center gap-2 before:content-[''] before:w-1.5 before:h-1.5 before:bg-[#B79A63] before:rounded-full">e-Enquiry</Link></li>
+              <li><Link to="#" className="text-[#E6DBC4] hover:text-white transition-colors text-sm flex items-center gap-2 before:content-[''] before:w-1.5 before:h-1.5 before:bg-[#B79A63] before:rounded-full">Privacy Policy</Link></li>
+            </ul>
+          </div>
 
-              <li className="hover:text-red-500 cursor-pointer">
-                Fabric Processing
+          {/* Contact Info */}
+          <div>
+            <h3 className="font-serif text-xl mb-6 text-[#B79A63]">Get In Touch</h3>
+            <ul className="space-y-4">
+              <li className="flex gap-3 text-sm text-[#E6DBC4] items-start">
+                <MapPin size={20} className="text-[#B79A63] shrink-0" />
+                <span>123 Silk weavers lane, Heritage Textile District, Surat, Gujarat 395002</span>
               </li>
-
-              <li className="hover:text-red-500 cursor-pointer">
-                Custom Textile Solutions
+              <li className="flex gap-3 text-sm text-[#E6DBC4] items-center">
+                <Phone size={20} className="text-[#B79A63] shrink-0" />
+                <span>+91 98765 43210</span>
               </li>
-
-              <li className="hover:text-red-500 cursor-pointer">
-                Export & Supply Chain
-              </li>
-
-              <li className="hover:text-red-500 cursor-pointer">
-                Quality Assurance
+              <li className="flex gap-3 text-sm text-[#E6DBC4] items-center">
+                <Mail size={20} className="text-[#B79A63] shrink-0" />
+                <span>hello@serenitysilk.com</span>
               </li>
             </ul>
-
           </div>
-
-          {/* NEWSLETTER */}
-          <div>
-
-            <h3 className="text-lg font-semibold text-white mb-6">
-              Stay Updated
-            </h3>
-
-            <p className="text-gray-400 mb-5">
-              Get the latest updates from Parekh Textile Chamber and industry insights.
-            </p>
-
-            <div className="flex">
-
-              <input
-                type="email"
-                placeholder="Email Address"
-                className="w-full px-4 py-3 bg-gray-800 text-white outline-none"
-              />
-
-              <button className="bg-red-500 px-5 font-semibold hover:bg-red-600 transition">
-                Send
-              </button>
-
-            </div>
-
-          </div>
-
+          
         </div>
 
-        {/* BOTTOM BAR */}
-        <div className="border-t border-gray-800 mt-16 pt-6 text-center text-gray-500 text-sm">
-
-          © {new Date().getFullYear()} Parekh Textile Chamber. All Rights Reserved.
-
+        <div className="border-t border-[#8C7345]/40 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+          <p className="text-[#E6DBC4] text-xs">
+            © {new Date().getFullYear()} H.C. Parekh Silk | Crafted with Elegance
+          </p>
+          <p className="text-[#E6DBC4]/60 text-xs">
+            Designed for the love of textiles
+          </p>
         </div>
-
-      </footer>
-    </>
-  )
-}
+      </div>
+    </footer>
+  );
+};
 
 export default Footer;

@@ -1,666 +1,319 @@
-import React, { useState, useEffect } from "react";
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { ArrowRight, ShieldCheck, Sparkles, TrendingUp, Package, Users, MapPin, Phone, Mail } from 'lucide-react';
 
-import {
-  Mail ,
-  CheckCircle,
-  Sparkles,
-  Palette,
-  Scissors,
-  Shirt,
-  Grid,
-  Star,
-  Phone,
-  Plus,
-  Menu,
-  X,
-  Facebook,
-  Twitter,
-  Linkedin,
-  Instagram,
-  MapPin,
-  Layers
-} from "lucide-react";
+const LandingPage = () => {
+  return (
+    <div className="w-full bg-white mt-16 md:mt-0 font-sans text-gray-800">
+      
+      {/* 1. Banner Section */}
+      <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden bg-white">
+        {/* Extremely subtle ambient glows */}
+        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-amber-50/50 rounded-full mix-blend-multiply filter blur-[100px] opacity-60"></div>
+        <div className="absolute -bottom-32 left-10 w-[400px] h-[400px] bg-yellow-50/50 rounded-full mix-blend-multiply filter blur-[100px] opacity-60"></div>
+        
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center pt-10">
+          
+          <div className="space-y-8 max-w-2xl">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-amber-100 bg-white shadow-sm">
+              <Sparkles className="text-amber-500" size={16} />
+              <span className="text-xs font-bold uppercase tracking-wider text-amber-700">Premium Silk Manufacturer</span>
+            </div>
+            
+            <h1 className="text-5xl md:text-7xl font-serif text-gray-900 leading-tight">
+              H.C. Parekh <br/>
+              <span className="text-amber-600">Silk Fabric.</span>
+            </h1>
+            
+            <p className="text-lg text-gray-600 leading-relaxed max-w-xl font-light">
+              Your trusted partner in wholesale silk fabric manufacturing. Experience the purity and luxury of our authentic bulk silk collections tailored for B2B excellence.
+            </p>
+            
+            <div className="flex flex-wrap gap-4 pt-4">
+              <Link to="/products-gallery" className="px-8 py-3.5 rounded-full bg-amber-600 text-white font-medium hover:bg-amber-700 shadow-lg shadow-amber-200 transition-all duration-300 flex items-center gap-2 group">
+                Wholesale Catalog
+                <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
+              </Link>
+              <Link to="/enquiry" className="px-8 py-3.5 rounded-full bg-white border border-gray-200 text-gray-700 font-medium hover:bg-gray-50 transition-all duration-300 shadow-sm">
+                Get Bulk Quote
+              </Link>
+            </div>
+          </div>
 
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay } from "swiper/modules";
+          <div className="relative hidden lg:block h-[600px] w-full mt-12 lg:mt-0">
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[450px] h-[580px] rounded-[40px] overflow-hidden bg-white border border-gray-100 p-2 shadow-2xl z-10">
+              <img 
+                 src="https://images.unsplash.com/photo-1605417855355-635fa1dacc9d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                alt="Premium white silk flowing"
+                className="w-full h-full object-cover rounded-[32px] transition-transform duration-700 hover:scale-105"
+              />
+            </div>
+            
+            <div className="absolute bottom-16 -left-8 bg-white/80 backdrop-blur-md p-4 rounded-2xl flex items-center gap-4 shadow-xl border border-gray-100 z-20 hover:-translate-y-1 transition-transform duration-300">
+              <div className="w-12 h-12 rounded-full bg-amber-50 flex items-center justify-center">
+                <Package className="text-amber-600" size={24} />
+              </div>
+              <div>
+                <p className="font-bold text-gray-900">Bulk Supply</p>
+                <p className="text-xs text-gray-500">Global Distribution</p>
+              </div>
+            </div>
 
-import "swiper/css";
-import SafetySection from "./SafetySection";
-import FAQSection from "./Faqs";
-import BlogSection from "./BlogSection";
+            <div className="absolute top-24 -right-10 bg-white/80 backdrop-blur-md px-5 py-3 rounded-full flex items-center gap-3 shadow-xl border border-gray-100 z-20 hover:-translate-y-1 transition-transform duration-300">
+               <div className="w-10 h-10 rounded-full bg-amber-500 flex justify-center items-center text-white">
+                  <TrendingUp size={20} />
+               </div>
+              <div>
+                <p className="text-sm font-bold text-gray-800">Best B2B Rates</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
-const slides = [
-    {
-        img: "https://fabiflex.preyantechnosys.com/wp-content/uploads/2022/06/banner456.jpg",
-        title1: "THE FABRICS OF",
-        title2: "CIVILIZATION.",
-        desc: "We’ve One Mission to be the Best Textile Company in NY."
-    },
-    {
-        img: "https://fabiflex.preyantechnosys.com/wp-content/uploads/2022/06/banner1234.jpg",
-        title1: "TEXTILES ART HAS",
-        title2: "VERSATILE FASHION",
-        desc: "We’ve One Mission to be the Best Textile Company in NY."
-    }
-];
+      {/* 2. About Us Section */}
+      <section className="py-24 bg-white relative">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <div className="relative rounded-3xl overflow-hidden shadow-2xl border border-gray-50 group">
+              <img 
+                src="https://images.unsplash.com/photo-1596455607563-ad6193f76b17?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" 
+                alt="Silk weaving loom" 
+                className="w-full h-[500px] object-cover group-hover:scale-105 transition-transform duration-700"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-gray-900/40 to-transparent"></div>
+            </div>
+            <div className="space-y-8">
+              <div>
+                <h4 className="text-amber-600 font-semibold tracking-wider uppercase text-sm mb-2">Our Legacy</h4>
+                <h2 className="text-4xl md:text-5xl font-serif text-gray-900 leading-tight">Masters of the Silk <br/> Since 1995.</h2>
+              </div>
+              <p className="text-gray-600 leading-relaxed font-light text-lg">
+                At H.C. Parekh Silk Fabric, we bring decades of heritage to modern textile manufacturing. We specialize in producing massive volumes of authentic, unadulterated silk with absolute precision. Our state-of-the-art looming facilities combined with traditional techniques make us the gold standard in the wholesale silk market.
+              </p>
+              <ul className="space-y-4 text-gray-700 font-medium">
+                <li className="flex items-center gap-3"><ShieldCheck className="text-amber-500" size={20}/> Certified authentic silk material</li>
+                <li className="flex items-center gap-3"><Users className="text-amber-500" size={20}/> Trusted by 500+ global brands</li>
+                <li className="flex items-center gap-3"><Package className="text-amber-500" size={20}/> Wholesale specific packaging & logistics</li>
+              </ul>
+              <Link to="/about" className="inline-block mt-4 text-amber-600 font-semibold border-b-2 border-amber-200 hover:border-amber-600 transition-colors pb-1">
+                Read Our Full Story
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
 
-const portfolio = [
-  {
-    img: "https://fabiflex.preyantechnosys.com/wp-content/uploads/2022/05/09-610x750.jpg",
-    category: "Dyeing",
-    title: "Cotton Fabric"
-  },
-  {
-    img: "https://fabiflex.preyantechnosys.com/wp-content/uploads/2022/05/05-610x750.jpg",
-    category: "Machine Made",
-    title: "Silk Fabric"
-  },
-  {
-    img: "https://fabiflex.preyantechnosys.com/wp-content/uploads/2022/05/08-610x750.jpg",
-    category: "Stitching",
-    title: "Fabric Linean"
-  },
-  {
-    img: "https://fabiflex.preyantechnosys.com/wp-content/uploads/2022/05/03-610x750.jpg",
-    category: "Manufacture",
-    title: "Wool Fabric"
-  },
-  {
-    img: "https://fabiflex.preyantechnosys.com/wp-content/uploads/2022/05/01-610x750.jpg",
-    category: "Printing",
-    title: "Georgette Fabric"
-  },
-  {
-    img: "https://fabiflex.preyantechnosys.com/wp-content/uploads/2022/05/portfolio2-610x750.jpg",
-    category: "Hand Loom",
-    title: "Leather Fabric"
-  }
-];
+      {/* 3. Products Section */}
+      <section className="py-24 bg-gray-50/50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center max-w-3xl mx-auto mb-16">
+            <h4 className="text-amber-600 font-semibold tracking-wider uppercase text-sm mb-2">Our Collection</h4>
+            <h2 className="text-4xl md:text-5xl font-serif text-gray-900 mb-6">Premium Wholesale Ranges</h2>
+            <p className="text-gray-600 font-light text-lg">
+              Explore our diverse portfolio of high-grade silk. Every fabric is crafted to perfection, ready for bulk ordering.
+            </p>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {[
+              { name: 'Mulberry Silk', img: 'https://images.unsplash.com/photo-1579227114347-15d08fc37cae?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80' },
+              { name: 'Pure Tussar Silk', img: 'https://plus.unsplash.com/premium_photo-1675806655180-2aee37d1faec?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80' },
+              { name: 'Silk Organza', img: 'https://images.unsplash.com/photo-1596455607386-3532f414cb2c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80' }
+            ].map((product, idx) => (
+              <div key={idx} className="group rounded-3xl overflow-hidden bg-white shadow-sm hover:shadow-2xl transition-all duration-300 border border-gray-100 flex flex-col">
+                <div className="h-64 overflow-hidden relative border-b border-gray-100">
+                  <img src={product.img} alt={product.name} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"/>
+                </div>
+                <div className="p-8 text-center bg-white relative z-10 flex-1 flex flex-col justify-center">
+                  <h3 className="text-2xl font-serif text-gray-900 mb-3">{product.name}</h3>
+                  <Link to="/products" className="text-amber-600 font-bold text-sm uppercase tracking-wide group-hover:underline">View Catalog</Link>
+                </div>
+              </div>
+            ))}
+          </div>
+          <div className="text-center mt-12">
+            <Link to="/products-gallery" className="inline-flex px-8 py-3.5 rounded-full bg-white border border-gray-200 text-gray-800 font-medium hover:bg-gray-50 transition-colors duration-300 shadow-sm">
+               View All Products
+            </Link>
+          </div>
+        </div>
+      </section>
 
-const  LandingPage = () => {
+      {/* 4. Why Choose Us Section */}
+      <section className="py-24 bg-white relative">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center max-w-3xl mx-auto mb-16">
+            <h4 className="text-amber-600 font-semibold tracking-wider uppercase text-sm mb-2">Our Advantage</h4>
+            <h2 className="text-4xl md:text-5xl font-serif text-gray-900 mb-6">Why Partner With Us?</h2>
+          </div>
 
-    const [menuOpen, setMenuOpen] = useState(false);
-    const [slide, setSlide] = useState(0);
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {[
+              { 
+                icon: <ShieldCheck size={28} />, 
+                title: 'Assured Quality', 
+                desc: 'Every roll of silk is rigorously inspected to ensure 100% purity, tensile strength, and color fastness before bulk dispatch.' 
+              },
+              { 
+                icon: <Package size={28} />, 
+                title: 'Scalable Manufacturing', 
+                desc: 'Capable of fulfilling massive wholesale orders with rapid turnaround times, ensuring your supply chain never breaks.' 
+              },
+              { 
+                icon: <Users size={28} />, 
+                title: 'Dedicated B2B Support', 
+                desc: 'Our wholesale clients benefit from custom dyeing, exclusive weaves, and a dedicated account manager for seamless communication.' 
+              }
+            ].map((feature, idx) => (
+              <div key={idx} className="p-10 rounded-[32px] bg-white border border-gray-100 shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 group">
+                <div className="w-16 h-16 rounded-2xl bg-amber-50 flex items-center justify-center mb-8 group-hover:rotate-6 transition-transform duration-300 text-amber-500">
+                  {feature.icon}
+                </div>
+                <h3 className="text-2xl font-serif text-gray-900 mb-4">{feature.title}</h3>
+                <p className="text-gray-600 leading-relaxed font-light">{feature.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
 
-    useEffect(() => {
-        const interval = setInterval(() => {
-            setSlide((prev) => (prev + 1) % slides.length);
-        }, 5000);
+      {/* 5. Blog Section */}
+      <section className="py-24 bg-gray-50/50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col sm:flex-row sm:justify-between items-start sm:items-end mb-12 gap-4">
+            <div>
+              <h4 className="text-amber-600 font-semibold tracking-wider uppercase text-sm mb-2">Insights</h4>
+              <h2 className="text-4xl md:text-5xl font-serif text-gray-900">Latest from the Loom</h2>
+            </div>
+            <Link to="/blog" className="flex text-gray-600 hover:text-amber-600 font-medium items-center gap-2">
+              All Articles <ArrowRight size={16}/>
+            </Link>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {/* Blog Post 1 */}
+            <Link to="/blog" className="group rounded-3xl overflow-hidden bg-white shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 flex flex-col sm:flex-row">
+              <div className="sm:w-2/5 h-64 sm:h-auto overflow-hidden">
+                <img src="https://images.unsplash.com/photo-1584227391910-c53ccbf82e7d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Blog 1" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"/>
+              </div>
+              <div className="p-8 flex flex-col justify-center sm:w-3/5">
+                <span className="text-amber-600 text-xs font-bold uppercase mb-3 tracking-wide">Market Trends</span>
+                <h3 className="text-xl font-serif text-gray-900 mb-3 group-hover:text-amber-600 transition-colors">The Future of Sustainable Silk in 2026</h3>
+                <p className="text-gray-500 text-sm mb-4 line-clamp-2">Exploring the rise of ethically sourced raw silk and how major brands are adapting their wholesale strategies.</p>
+                <div className="mt-auto">
+                    <span className="text-gray-400 text-xs font-bold uppercase tracking-wider">March 15, 2026</span>
+                </div>
+              </div>
+            </Link>
+            
+            {/* Blog Post 2 */}
+            <Link to="/blog" className="group rounded-3xl overflow-hidden bg-white shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 flex flex-col sm:flex-row">
+              <div className="sm:w-2/5 h-64 sm:h-auto overflow-hidden">
+                <img src="https://images.unsplash.com/photo-1596455607386-3532f414cb2c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Blog 2" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"/>
+              </div>
+              <div className="p-8 flex flex-col justify-center sm:w-3/5">
+                <span className="text-amber-600 text-xs font-bold uppercase mb-3 tracking-wide">Material Guide</span>
+                <h3 className="text-xl font-serif text-gray-900 mb-3 group-hover:text-amber-600 transition-colors">Mulberry vs. Tussar: A Buyer's Guide</h3>
+                <p className="text-gray-500 text-sm mb-4 line-clamp-2">A comprehensive breakdown for B2B buyers looking to choose the perfect silk blend for their next collection.</p>
+                <div className="mt-auto">
+                    <span className="text-gray-400 text-xs font-bold uppercase tracking-wider">March 10, 2026</span>
+                </div>
+              </div>
+            </Link>
+          </div>
+        </div>
+      </section>
 
-        return () => clearInterval(interval);
-    }, []);
+      {/* 6. Contact Us / Quick Enquiry Section */}
+      <section className="py-24 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+           <div className="bg-gray-900 rounded-[40px] overflow-hidden flex flex-col lg:flex-row shadow-2xl">
+             {/* Left Info Side */}
+             <div className="lg:w-5/12 p-12 lg:p-16 bg-gray-900 text-white relative overflow-hidden flex flex-col justify-center">
+                <div className="absolute top-0 right-0 w-64 h-64 bg-amber-500/10 rounded-full blur-3xl"></div>
+                <div className="absolute bottom-0 left-0 w-64 h-64 bg-amber-500/10 rounded-full blur-3xl"></div>
+                
+                <h2 className="text-4xl font-serif mb-6 relative z-10">Get in Touch</h2>
+                <p className="text-gray-400 mb-12 font-light text-lg relative z-10">
+                  Ready to place a wholesale order or need custom fabric specifications? Our team is available 24/7.
+                </p>
+                
+                <div className="space-y-8 relative z-10">
+                  <div className="flex items-start gap-4">
+                    <div className="w-12 h-12 bg-gray-800 rounded-full flex items-center justify-center shrink-0">
+                      <MapPin className="text-amber-500" size={20}/>
+                    </div>
+                    <div>
+                      <h4 className="font-medium text-white mb-1">Headquarters</h4>
+                      <p className="text-gray-400 text-sm leading-relaxed">123 Silk Avenue, Textile Hub<br/>Surat, Gujarat 395002, India</p>
+                    </div>
+                  </div>
+                  
+                  <div className="flex items-start gap-4">
+                    <div className="w-12 h-12 bg-gray-800 rounded-full flex items-center justify-center shrink-0">
+                      <Phone className="text-amber-500" size={20}/>
+                    </div>
+                    <div>
+                      <h4 className="font-medium text-white mb-1">Phone & WhatsApp</h4>
+                      <p className="text-gray-400 text-sm">+91 98765 43210</p>
+                    </div>
+                  </div>
 
-    const card =
-    "border p-6 relative bg-[#f7f7f7] transition duration-300 hover:-translate-y-2 hover:shadow-xl group";
+                  <div className="flex items-start gap-4">
+                    <div className="w-12 h-12 bg-gray-800 rounded-full flex items-center justify-center shrink-0">
+                      <Mail className="text-amber-500" size={20}/>
+                    </div>
+                    <div>
+                      <h4 className="font-medium text-white mb-1">Email Support</h4>
+                      <p className="text-gray-400 text-sm">sales@hcparekhsilk.com</p>
+                    </div>
+                  </div>
+                </div>
+             </div>
+             
+             {/* Right Form Side */}
+             <div className="lg:w-7/12 p-12 lg:p-16 bg-white border border-gray-100">
+               <h3 className="text-2xl font-serif text-gray-900 mb-8">Send a Quick Enquiry</h3>
+               <form className="space-y-6">
+                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                   <div className="space-y-2">
+                     <label className="text-sm font-bold text-gray-700 tracking-wide uppercase">Full Name</label>
+                     <input type="text" className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-amber-500/20 focus:border-amber-500 transition-colors" placeholder="John Doe" />
+                   </div>
+                   <div className="space-y-2">
+                     <label className="text-sm font-bold text-gray-700 tracking-wide uppercase">Company Name</label>
+                     <input type="text" className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-amber-500/20 focus:border-amber-500 transition-colors" placeholder="Fashion Boutique Inc." />
+                   </div>
+                 </div>
+                 
+                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                   <div className="space-y-2">
+                     <label className="text-sm font-bold text-gray-700 tracking-wide uppercase">Email Address</label>
+                     <input type="email" className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-amber-500/20 focus:border-amber-500 transition-colors" placeholder="john@example.com" />
+                   </div>
+                   <div className="space-y-2">
+                     <label className="text-sm font-bold text-gray-700 tracking-wide uppercase">Phone Number</label>
+                     <input type="tel" className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-amber-500/20 focus:border-amber-500 transition-colors" placeholder="+1 (555) 000-0000" />
+                   </div>
+                 </div>
 
-
-    return (
-        <div className="font-[Rubik] bg-white">
-
-        <section className="relative h-[520px] md:h-[720px] w-full overflow-hidden">
-
-  {slides.map((item, index) => (
-
-    <div
-      key={index}
-      className={`absolute inset-0 transition-opacity duration-1000 ${
-        slide === index ? "opacity-100" : "opacity-0"
-      }`}
-    >
-
-      {/* IMAGE */}
-
-      <img
-        src={item.img}
-        className="w-full h-full object-cover"
-      />
-
-      {/* OVERLAY */}
-
-      <div className="absolute inset-0 bg-black/50"></div>
-
-      {/* CONTENT */}
-
-      <div className="
-        absolute
-        top-1/2
-        left-1/2
-        md:left-20
-        transform
-        -translate-x-1/2
-        -translate-y-1/2
-        md:translate-x-0
-        text-center
-        md:text-left
-        text-white
-        px-6
-        max-w-xl
-      ">
-
-        <p className="mb-4 tracking-widest text-xs md:text-sm uppercase">
-          Factory • Textile • Business
-        </p>
-
-        <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold leading-tight">
-          {item.title1}
-        </h1>
-
-        <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold leading-tight">
-          {item.title2}
-        </h1>
-
-        <p className="mt-4 md:mt-6 text-sm md:text-lg text-gray-200">
-          {item.desc}
-        </p>
-
-        <button className="mt-6 md:mt-8 bg-orange-600 hover:bg-white hover:text-orange-600 border-2 border-orange-600 px-6 md:px-8 py-3 md:py-4 font-bold transition">
-          OUR SERVICES +
-        </button>
-
-      </div>
+                 <div className="space-y-2">
+                   <label className="text-sm font-bold text-gray-700 tracking-wide uppercase">Message / Requirements</label>
+                   <textarea rows="4" className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-amber-500/20 focus:border-amber-500 transition-colors resize-none" placeholder="I am looking for bulk Mulberry silk..."></textarea>
+                 </div>
+                 
+                 <button type="submit" className="w-full sm:w-auto px-10 py-4 bg-amber-600 text-white font-bold tracking-wide uppercase rounded-xl hover:bg-amber-700 shadow-lg shadow-amber-200 transition-all duration-300 transform hover:-translate-y-1">
+                   Submit Enquiry
+                 </button>
+               </form>
+             </div>
+           </div>
+        </div>
+      </section>
 
     </div>
-
-  ))}
-
-</section>
-
-
-
-            {/* PRODUCTION SECTION */}
-
-            <section className="py-24 bg-gray-50">
-
-                <div className="max-w-7xl mx-auto px-6">
-
-                    {/* HEADING */}
-
-                    <div className="text-center mb-16">
-
-                        <h2 className="text-4xl md:text-5xl font-bold text-gray-900 leading-tight">
-                            We Give Top Production <br />
-                            From Every Angle.
-                        </h2>
-
-                    </div>
-
-                    {/* CARDS */}
-
-                    <div className="grid md:grid-cols-3 gap-10">
-
-                        {/* CARD 1 */}
-
-                        <div className="relative bg-white p-10 rounded-xl shadow-sm hover:shadow-xl transition duration-300 group">
-
-                            <div className="w-14 h-14 flex items-center justify-center bg-orange-100 rounded-lg mb-6 group-hover:bg-orange-500 transition">
-
-                                <Layers className="text-orange-600 group-hover:text-white" size={28} />
-
-                            </div>
-
-                            <h3 className="text-xl font-semibold text-gray-900 mb-4 leading-snug">
-                                Choose For Many Fabrics and Textiles materials for your production
-                            </h3>
-
-                            <p className="text-gray-600 text-sm leading-relaxed">
-                                We classified it on the basis of material, design and by craft.
-                            </p>
-
-                            <span className="absolute right-8 top-6 text-gray-100 text-8xl font-bold">
-                                01
-                            </span>
-
-                        </div>
-
-                        {/* CARD 2 */}
-
-                        <div className="relative bg-white p-10 rounded-xl shadow-sm hover:shadow-xl transition duration-300 group">
-
-                            <div className="w-14 h-14 flex items-center justify-center bg-orange-100 rounded-lg mb-6 group-hover:bg-orange-500 transition">
-
-                                <Palette className="text-orange-600 group-hover:text-white" size={28} />
-
-                            </div>
-
-                            <h3 className="text-xl font-semibold text-gray-900 mb-4 leading-snug">
-                                Create Your Design Only for the Fabric Production and Natural Fabrics
-                            </h3>
-
-                            <p className="text-gray-600 text-sm leading-relaxed">
-                                With its rapid growth over the last four decades, since 1970
-                            </p>
-
-                            <span className="absolute right-8 top-6 text-gray-100 text-8xl font-bold">
-                                02
-                            </span>
-
-                        </div>
-
-                        {/* CARD 3 */}
-
-                        <div className="relative bg-white p-10 rounded-xl shadow-sm hover:shadow-xl transition duration-300 group">
-
-                            <div className="w-14 h-14 flex items-center justify-center bg-orange-100 rounded-lg mb-6 group-hover:bg-orange-500 transition">
-
-                                <Shirt className="text-orange-600 group-hover:text-white" size={28} />
-
-                            </div>
-
-                            <h3 className="text-xl font-semibold text-gray-900 mb-4 leading-snug">
-                                Choose from various fabric types that are stretchy and comfortable.
-                            </h3>
-
-                            <p className="text-gray-600 text-sm leading-relaxed">
-                                Fabiflex is a leading export textile service globally.
-                            </p>
-
-                            <span className="absolute right-8 top-6 text-gray-100 text-8xl font-bold">
-                                03
-                            </span>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-            </section>
-
-            <section className="py-24 bg-white">
-
-                <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-16 items-center">
-
-                    {/* LEFT IMAGE */}
-
-                    <div className="relative">
-
-                        <img
-                            src="https://fabiflex.preyantechnosys.com/wp-content/uploads/2022/05/image1-1.jpg"
-                            className="rounded-xl shadow-lg w-full"
-                        />
-
-                        {/* EXPERIENCE BOX */}
-
-                        <div className="absolute bottom-10 left-6 bg-white shadow-xl px-8 py-6 rounded-lg">
-
-                            <h3 className="text-4xl font-bold text-orange-600">
-                                25+
-                            </h3>
-
-                            <p className="text-gray-700 text-sm leading-tight">
-                                Year experience <br /> in Fabiflex
-                            </p>
-
-                        </div>
-
-                    </div>
-
-                    {/* RIGHT CONTENT */}
-
-                    <div>
-
-                        <p className="text-orange-600 font-semibold mb-3 uppercase tracking-wider">
-                            Get informed
-                        </p>
-
-                        <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6 leading-tight">
-                            Let’s Build Something Creative together
-                        </h2>
-
-                        {/* ICON TEXT */}
-
-                        <div className="flex items-start gap-4 mb-6">
-
-                            <div className="bg-orange-100 p-3 rounded-lg">
-                                <Sparkles className="text-orange-600" />
-                            </div>
-
-                            <p className="text-gray-700 text-lg">
-                                We’re in this business <span className="font-bold text-gray-900">Since 1987</span> and we provide the best service
-                            </p>
-
-                        </div>
-
-                        <p className="text-gray-600 mb-8 leading-relaxed">
-                            It is additionally connected with the production of clothes. The crude material
-                            of textiles is the fiber which might be regular regenerated.
-                        </p>
-
-                        {/* LIST */}
-
-                        <ul className="space-y-4">
-
-                            <li className="flex items-start gap-3">
-
-                                <CheckCircle className="text-orange-500 mt-1" size={20} />
-
-                                <p className="text-gray-700">
-                                    It can be very well produced using fiber, yarn, texture, or mix.
-                                </p>
-
-                            </li>
-
-                            <li className="flex items-start gap-3">
-
-                                <CheckCircle className="text-orange-500 mt-1" size={20} />
-
-                                <p className="text-gray-700">
-                                    It is one of the most extensive terms applied to the clothing industry.
-                                </p>
-
-                            </li>
-
-                            <li className="flex items-start gap-3">
-
-                                <CheckCircle className="text-orange-500 mt-1" size={20} />
-
-                                <p className="text-gray-700">
-                                    It might be a finished or unfinished item. It has no particular use.
-                                </p>
-
-                            </li>
-
-                        </ul>
-
-                    </div>
-
-                </div>
-
-            </section>
-
-    <section className="bg-[#e9e9e9] py-24">
-
-      <div className="max-w-6xl mx-auto relative">
-
-
-        {/* HEADING */}
-
-        <div className="bg-[#ef3e32] text-white text-center py-12 w-[65%] mx-auto font-bold text-3xl uppercase tracking-wide transition hover:scale-105">
-          TAKE LOOK INTO OUR
-          <br />
-          BEST SERVICES AND PRODUCTION
-        </div>
-
-
-        {/* MAIN BOX */}
-
-        <div className="bg-white shadow-lg p-10 mt-[-40px]">
-
-          <div className="grid md:grid-cols-3 gap-6">
-
-
-            {/* CARD 1 */}
-
-            <div className={card}>
-              <div className="flex gap-4 items-start">
-                <Palette className="text-gray-700 group-hover:text-red-500 transition group-hover:scale-110" size={32} />
-                <div>
-                  <h3 className="font-semibold text-lg group-hover:text-red-500 transition">
-                    Fabric Design
-                  </h3>
-                  <p className="text-[#ef3e32] text-xs font-bold uppercase">
-                    Manufacture
-                  </p>
-                </div>
-              </div>
-
-              <p className="text-gray-500 text-sm mt-4">
-                It is the process of transfer dyes from the aqueous solution to the fiber surface
-              </p>
-
-              <p className="text-[#ef3e32] text-sm font-semibold mt-4">
-                READ MORE +
-              </p>
-
-              <div className="absolute bottom-0 right-0 w-0 h-0 border-l-[12px] border-l-transparent border-b-[12px] border-b-[#ef3e32] transition group-hover:rotate-45" />
-            </div>
-
-
-            {/* CARD 2 */}
-
-            <div className={card}>
-              <div className="flex gap-4 items-start">
-                <Scissors className="text-gray-700 group-hover:text-red-500 transition group-hover:scale-110" size={32} />
-                <div>
-                  <h3 className="font-semibold text-lg group-hover:text-red-500 transition">
-                    Stitch Fabric
-                  </h3>
-                  <p className="text-[#ef3e32] text-xs font-bold uppercase">
-                    Fabric Printing
-                  </p>
-                </div>
-              </div>
-
-              <p className="text-gray-500 text-sm mt-4">
-                Stitches are the fundamental elements of sewing, knitting and lace-making
-              </p>
-
-              <p className="text-[#ef3e32] text-sm font-semibold mt-4">
-                READ MORE +
-              </p>
-
-              <div className="absolute bottom-0 right-0 w-0 h-0 border-l-[12px] border-l-transparent border-b-[12px] border-b-[#ef3e32] transition group-hover:rotate-45" />
-            </div>
-
-
-            {/* CARD 3 */}
-
-            <div className={card}>
-              <div className="flex gap-4 items-start">
-                <Shirt className="text-gray-700 group-hover:text-red-500 transition group-hover:scale-110" size={32} />
-                <div>
-                  <h3 className="font-semibold text-lg group-hover:text-red-500 transition">
-                    Decoration Art
-                  </h3>
-                  <p className="text-[#ef3e32] text-xs font-bold uppercase">
-                    Fabric Dyeing
-                  </p>
-                </div>
-              </div>
-
-              <p className="text-gray-500 text-sm mt-4">
-                It is the process of transfer dyes from the aqueous solution to the fiber surface
-              </p>
-
-              <p className="text-[#ef3e32] text-sm font-semibold mt-4">
-                READ MORE +
-              </p>
-
-              <div className="absolute bottom-0 right-0 w-0 h-0 border-l-[12px] border-l-transparent border-b-[12px] border-b-[#ef3e32] transition group-hover:rotate-45" />
-            </div>
-
-
-            {/* CARD 4 */}
-
-            <div className={card}>
-              <div className="flex gap-4 items-start">
-                <Grid className="text-gray-700 group-hover:text-red-500 transition group-hover:scale-110" size={32} />
-                <div>
-                  <h3 className="font-semibold text-lg group-hover:text-red-500 transition">
-                    Inter Design
-                  </h3>
-                  <p className="text-[#ef3e32] text-xs font-bold uppercase">
-                    Web Fabric
-                  </p>
-                </div>
-              </div>
-
-              <p className="text-gray-500 text-sm mt-4">
-                Have been engaged with modern units for all requirements of design bleach.
-              </p>
-
-              <p className="text-[#ef3e32] text-sm font-semibold mt-4">
-                READ MORE +
-              </p>
-
-              <div className="absolute bottom-0 right-0 w-0 h-0 border-l-[12px] border-l-transparent border-b-[12px] border-b-[#ef3e32] transition group-hover:rotate-45" />
-            </div>
-
-
-            {/* RATING CARD */}
-
-            <div className="border p-6 bg-[#f7f7f7] flex flex-col items-center justify-center text-center transition hover:shadow-xl hover:-translate-y-2">
-
-              <img
-                src="https://fabiflex.preyantechnosys.com/wp-content/uploads/2022/05/logo-dark.svg"
-                className="w-28 mb-3 transition hover:scale-110"
-              />
-
-              <div className="flex text-orange-400 mb-2">
-                <Star size={16} />
-                <Star size={16} />
-                <Star size={16} />
-                <Star size={16} />
-                <Star size={16} />
-              </div>
-
-              <p className="text-sm text-gray-600">
-                Rated <span className="text-[#ef3e32] font-bold">4.7</span> out of 5 based on over
-                <span className="text-[#ef3e32] font-bold"> 1000+ </span>
-                Reviews
-              </p>
-
-            </div>
-
-
-            {/* CONSULTING CARD */}
-
-            <div
-              className="text-white p-6 flex flex-col justify-center relative overflow-hidden group"
-            >
-
-              <div
-                className="absolute inset-0 bg-cover bg-center transition duration-500 group-hover:scale-110"
-                style={{
-                  backgroundImage:
-                    "url(https://images.unsplash.com/photo-1581092918056-0c4c3acd3789)"
-                }}
-              />
-
-              <div className="relative z-10">
-
-                <h3 className="text-xl font-bold">
-                  GET YOUR <span className="text-[#ef3e32]">FREE</span> CONSULTING
-                </h3>
-
-                <p className="text-sm mt-2 mb-4">
-                  All Fabrics are textiles in Products.
-                </p>
-
-                <p className="flex items-center gap-2 text-sm">
-                  <Phone size={16} /> Call :
-                  <span className="text-[#ef3e32] font-bold">
-                    123 456 78910
-                  </span>
-                </p>
-
-                <button className="border border-white px-4 py-2 mt-4 text-sm transition hover:bg-white hover:text-black">
-                  JOIN US NOW
-                </button>
-
-              </div>
-
-            </div>
-
-          </div>
-
-        </div>
-
-
-        {/* BUTTON */}
-
-        <div className="text-center mt-12">
-
-          <button className="border border-white bg-[#ef3e32] text-white px-8 py-3 text-sm uppercase tracking-wide transition hover:bg-black hover:scale-105">
-
-            VIEW MORE SERVICES +
-
-          </button>
-
-        </div>
-
-      </div>
-</section>
-
-<section className="w-full">
-
-  {/* RED CTA */}
-
-  <div className="bg-[#ef3e32] py-16 flex justify-center">
-
-    <button className="border border-white text-white px-10 py-4 uppercase tracking-wider hover:bg-white hover:text-black transition">
-
-      VIEW MORE SERVICES +
-
-    </button>
-
-  </div>
-
-
-  {/* PORTFOLIO SLIDER */}
-
-  <Swiper
-    modules={[Autoplay]}
-    slidesPerView={5}
-    spaceBetween={0}
-    loop={true}
-    autoplay={{
-      delay: 3500,
-      disableOnInteraction: false
-    }}
-    breakpoints={{
-      320: { slidesPerView: 1 },
-      640: { slidesPerView: 2 },
-      768: { slidesPerView: 3 },
-      1024: { slidesPerView: 4 },
-      1280: { slidesPerView: 5 }
-    }}
-  >
-
-    {portfolio.map((item, index) => (
-
-      <SwiperSlide key={index}>
-
-        <div className="group relative h-[500px] overflow-hidden">
-
-          {/* IMAGE */}
-
-          <img
-            src={item.img}
-            className="w-full h-full object-cover transition duration-500 group-hover:scale-110"
-          />
-
-          {/* DARK OVERLAY */}
-
-          <div className="absolute inset-0 bg-[#0c1d2b]/70 opacity-0 group-hover:opacity-100 transition flex items-center justify-center">
-
-            {/* PLUS BUTTON */}
-
-            <div className="w-14 h-14 bg-[#ef3e32] flex items-center justify-center text-white cursor-pointer hover:scale-110 transition">
-
-              <Plus size={26} />
-
-            </div>
-
-          </div>
-
-        </div>
-
-      </SwiperSlide>
-
-    ))}
-
-  </Swiper>
-
-</section>
-< SafetySection/>
-<FAQSection/>
-<BlogSection/>
-
-  
-
-        </div>
-    );
+  );
 };
 
 export default LandingPage;
